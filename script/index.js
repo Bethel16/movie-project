@@ -8,7 +8,7 @@ function getPopularMovies() {
 
       var content = '';
 
-      popularMovies.slice(0, 12).map(popularMovie => {
+      popularMovies.slice(0, 15).map(popularMovie => {
         content += `<div class="card">
           <img src="${popularMovie.image}" alt="">
     <div class="descriptions">
@@ -42,7 +42,7 @@ function getPopularTvShows() {
 
       var content = '';
 
-      popularTVs.slice(0, 12).map(popularTV => {
+      popularTVs.slice(0, 15).map(popularTV => {
         content += `<div class="card">
           <img src="${popularTV.image}" alt="">
     <div class="descriptions">
