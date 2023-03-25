@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Movie App1</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+</head>
+<body>
+    <box-icon name='movie-play'></box-icon>
+
+    <div class="page-header">
+
+        <h1>IMDb  Movies</h1>
+        
+        <p>    
+            Home for every movies!</p>
+ 
+    </div>
+    
+    <div class="searchDiv">
+
+        <div class="example" id="searchBox">
+            <input id="searchItem" type="text" placeholder="---Search Movies---">
+            <button onclick="searchMovie()" id="btn">Search</button>
+        </div>
+       
+    </div>
+
+    
+
+    <div id="contents" class="contents">
+        <div>
+          
+            <div class="popularMovieTitle">
+                <h1>Popular Movies</h1>
+                
+            </div>
+            <div id="popularMovie" class="wrapper">
+               
+            </div>
+        </div>
+        <div>
+            <div class="popularTVTitle">
+                <h1>Popular TV Shows</h1>
+            </div>
+            <div id="popularTV" class="wrapper">
+               
+            </div>
+        </div>
+    </div>
+    
+    
+<footer>
+  <p>Created By Bethel
+    Thanks for Visiting <box-icon name='heart-circle'></box-icon>
+  </p>
+</footer>
+
+<script src="./script/index.js"></script>
+<script>
+    const obj= {
+  id: "tt0134084",
+  rank: 100,
+  rankUpDown: "+45",
+  title: "Scream 3",
+  fullTitle: "Scream 3 (2000)",
+  year: 2000,
+  image: "https://m.media-amazon.com/images/M/MV5BMDljNmI1YzctNjJlZC00NzZlLWFlZTgtMDE4MjJiMDk0ZGY4XkEyXkFqcGdeQXVyMjg3MDQ0Mjk@._V1_Ratio0.6716_AL_.jpg",
+  crew: "Wes Craven (dir.), David Arquette, Neve Campbell",
+  imDbRating: 5.6,
+  imDbRatingCount: 150748
+  }
+  const popularTVsDiv1 = document.getElementById("popularMovie");
+  const popularTVsDiv = document.getElementById("popularTV");
+
+  var content = '';
+  content += `<div class="card">
+            <img src="${obj.image}" alt="">
+			<div class="descriptions">
+                <p class="movie-text">
+                <br><span class="bold-title">rank:</span> ${obj.rank}<br>
+                    <span class="bold-title">title:</span> ${obj.title}<br>
+                    <span class="bold-title">crew:</span> ${obj.crew}<br>
+                    <span class="bold-title">Rate:</span> ${obj.imDbRating}<br>
+                    <span class="bold-title">rankUpDown:</span> ${obj.rankUpDown}<br>
+                    <span class="bold-title">release-year:</span> ${obj.year}<br>
+                </p>
+                <button id="Trailer" type="button">  Watch Trailer</button>
+            </div>
+        </div>`;
+    ;
+
+    popularTVsDiv.innerHTML = content;
+    
+
+function Trailer(){
+    var x= obj.id;
+   fetch(`https://imdb-api.com/API/YouTubeTrailer/k_6f75ijyi/${x}`)
+   .then((response) => response.json())
+  .then((data) => {
+    const contentsDiv = document.getElementById("contents");
+
+    contentsDiv.innerHTML = "";
+    const searchResults = data;
+
+    var content = '';
+});}
+</script>
+</body>
+</html>
