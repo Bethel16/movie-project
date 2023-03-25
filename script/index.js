@@ -1,15 +1,15 @@
 function getPopularMovies() {
   fetch("https://imdb-api.com/API/MostPopularMovies/k_6f75ijyi")
-.then((response) => response.json())
-.then((data) => {
-  const popularMoviesDiv = document.getElementById("popularMovie");
+    .then((response) => response.json())
+    .then((data) => {
+      const popularMoviesDiv = document.getElementById("popularMovie");
 
-  const popularMovies = data.items;
+      const popularMovies = data.items;
 
-  var content = '';
+      var content = '';
 
-  popularMovies.slice(0,12).map(popularMovie => {
-    content += `<div class="card">
+      popularMovies.slice(0, 12).map(popularMovie => {
+        content += `<div class="card">
           <img src="${popularMovie.image}" alt="">
     <div class="descriptions">
               <h1><span class="bold-title">Title: ${popularMovie.title}</span></h1>
@@ -23,27 +23,27 @@ function getPopularMovies() {
               <button id="Trailer" type="button">  Watch Trailer</button>
           </div>
       </div>`;
-  });
+      });
 
-  popularMoviesDiv.innerHTML += content;
-  
-});
+      popularMoviesDiv.innerHTML += content;
+
+    });
 }
 
-// getPopularMovies();
+getPopularMovies();
 
 function getPopularTvShows() {
   fetch("https://imdb-api.com/API/MostPopularTVs/k_6f75ijyi")
-.then((response) => response.json())
-.then((data) => {
-  const popularTVsDiv = document.getElementById("popularTV");
+    .then((response) => response.json())
+    .then((data) => {
+      const popularTVsDiv = document.getElementById("popularTV");
 
-  const popularTVs = data.items;
+      const popularTVs = data.items;
 
-  var content = '';
+      var content = '';
 
-  popularTVs.slice(0,12).map(popularTV => {
-    content += `<div class="card">
+      popularTVs.slice(0, 12).map(popularTV => {
+        content += `<div class="card">
           <img src="${popularTV.image}" alt="">
     <div class="descriptions">
               <h1><span class="bold-title">
@@ -61,31 +61,31 @@ function getPopularTvShows() {
 
           </div>
       </div>`;
-  });
+      });
 
-  popularTVsDiv.innerHTML += content;
-  
-});
+      popularTVsDiv.innerHTML += content;
+
+    });
 }
 
-// getPopularTvShows();
+getPopularTvShows();
 
 const searchMovie = () => {
-const expression = document.getElementById("searchItem").value;
+  const expression = document.getElementById("searchItem").value;
 
-fetch(`https://imdb-api.com/API/SearchMovie/k_6f75ijyi/${expression}`)
-.then((response) => response.json())
-.then((data) => {
-  const contentsDiv = document.getElementById("contents");
+  fetch(`https://imdb-api.com/API/SearchMovie/k_6f75ijyi/${expression}`)
+    .then((response) => response.json())
+    .then((data) => {
+      const contentsDiv = document.getElementById("contents");
 
-  contentsDiv.innerHTML = "";
+      contentsDiv.innerHTML = "";
 
-  const searchResults = data;
+      const searchResults = data;
 
-  var content = '';
+      var content = '';
 
-  searchResults.results.slice(0,12).map(searchResult => {
-    content += `<div class="card">
+      searchResults.results.slice(0, 12).map(searchResult => {
+        content += `<div class="card">
           <img src="${searchResult.image}" alt="">
     <div class="descriptions">
               <h1><span class="bold-title">Result Type: ${searchResult.resultType}</span></h1>
@@ -100,14 +100,14 @@ fetch(`https://imdb-api.com/API/SearchMovie/k_6f75ijyi/${expression}`)
 
           </div>
       </div>`;
-  });
+      });
 
-  contentsDiv.innerHTML += `<div>
+      contentsDiv.innerHTML += `<div>
           <div class="popularMovieTitle">
               <h1>Expression: ${typeof searchResults.expression === 'string' ? searchResults.expression : "No result found!"}</h1>
           </div>
           <div id="popularMovie" class="wrapper">${content}</div>
      </div>`;
-  
-});
+
+    });
 }
