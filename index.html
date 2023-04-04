@@ -70,9 +70,10 @@
             <img src="${obj.image}" alt="">
 			<div class="descriptions">
                 <p class="movie-text">
-                <br><span class="bold-title">rank:</span> ${obj.rank}<br>
-                    <span class="bold-title">title:</span> ${obj.title}<br>
-                    <span class="bold-title">crew:</span> ${obj.crew}<br>
+                <br>
+                <span class="bold-title">title:</span> ${obj.title}<br>
+                <span class="bold-title">rank:</span> ${obj.rank}<br>    
+              <span class="bold-title">crew:</span> ${obj.crew}<br>
                     <span class="bold-title">Rate:</span> ${obj.imDbRating}<br>
                     <span class="bold-title">rankUpDown:</span> ${obj.rankUpDown}<br>
                     <span class="bold-title">release-year:</span> ${obj.year}<br>
@@ -82,19 +83,19 @@
         </div>`;
         popularTVsDiv.innerHTML = content;
 
-        function Trailer() {
-            var x = obj.id;
-            fetch(`https://imdb-api.com/API/YouTubeTrailer/k_6f75ijyi/${x}`)
-                .then((response) => response.json())
-                .then((data) => {
-                    const contentsDiv = document.getElementById("contents");
+        // function Trailer() {
+        //     var x = obj.id;
+        //     fetch(`https://imdb-api.com/API/YouTubeTrailer/k_6f75ijyi/${x}`)
+        //         .then((response) => response.json())
+        //         .then((data) => {
+        //             const contentsDiv = document.getElementById("contents");
 
-                    contentsDiv.innerHTML = "";
-                    const searchResults = data;
+        //             contentsDiv.innerHTML = "";
+        //             const searchResults = data;
 
-                    var content = "";
-                });
-        }
+        //             var content = "";
+        //         });
+        // }
     </script>
 </body>
 

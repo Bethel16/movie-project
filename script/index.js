@@ -1,3 +1,4 @@
+
 function getPopularMovies() {
   fetch("https://imdb-api.com/API/MostPopularMovies/k_6f75ijyi")
     .then((response) => response.json())
@@ -10,24 +11,23 @@ function getPopularMovies() {
 
       popularMovies.slice(0, 15).map(popularMovie => {
         content += `<div class="card">
-          <img src="${popularMovie.image}" alt="">
-    <div class="descriptions">
-              <h1><span class="bold-title">Title: ${popularMovie.title}</span></h1>
-              <p class="movie-text">
-              <span class="bold-title">crew:</span> ${popularMovie.crew}<br>
-              <<span class="bold-title">rank:</span> ${popularMovie.rank}<br>                  
-                  <span class="bold-title">Rate:</span> ${popularMovie.imDbRating}<br>
-                  <span class="bold-title">rankUpDown:</span> ${popularMovie.rankUpDown}<br>
-                  <span class="bold-title">Released-Year:</span> ${popularMovie.year}<br>
-              </p>
-              <button id="Trailer" type="button">  Watch Trailer</button>
-          </div>
-      </div>`;
+        <img src="${popularMovie.image}" alt="">
+  <div class="descriptions">
+            <p class="movie-text">
+            <br><span class="bold-title">rank:</span> ${popularMovie.rank}<br>
+                <span class="bold-title">title:</span>${popularMovie.title}<br>
+                <span class="bold-title">crew:</span> ${popularMovie.crew}<br>
+                <span class="bold-title">Rate:</span> ${popularMovie.imDbRating}<br>
+                <span class="bold-title">rankUpDown:</span> ${popularMovie.rankUpDown}<br>
+                <span class="bold-title">release-year:</span>${popularMovie.year}<br>
+            </p>
+            <button id="Trailer" type="button">  Watch Trailer</button>
+        </div>
+    </div>`;
       });
-
       popularMoviesDiv.innerHTML += content;
-
     });
+    
 }
 
 getPopularMovies();
@@ -40,27 +40,23 @@ function getPopularTvShows() {
 
       const popularTVs = data.items;
 
-      var content = '';
+      var content = ''; 
 
       popularTVs.slice(0, 15).map(popularTV => {
         content += `<div class="card">
-          <img src="${popularTV.image}" alt="">
-    <div class="descriptions">
-              <h1><span class="bold-title">
-              Title: ${popularTV.title}</span></h1>
-              <p class="movie-text">
-
-              <br><span class="bold-title">rank:</span> ${popularTV.rank}<br>
-                 
-                  <span class="bold-title">crew:</span> ${popularTV.crew}<br>
-                  <span class="bold-title">imDbRatingCount:</span> ${popularTV.imDbRatingCount}<br>
-                  <span class="bold-title">Rank:</span> ${popularTV.rankUpDown}<br>
-                  <span class="bold-title">Released-Year:</span> ${popularTV.year}<br>
-              </p>
-              <button id="Trailer" type="button">  Watch Trailer</button>
-
-          </div>
-      </div>`;
+        <img src="${popularTV.image}" alt="">
+  <div class="descriptions">
+            <p class="movie-text">
+            <br><span class="bold-title">rank:</span> ${popularTV.rank}<br>
+                <span class="bold-title">title:</span>${popularTV.title}<br>
+                <span class="bold-title">crew:</span>${popularTV.crew}<br>
+                <span class="bold-title">Rate:</span> ${popularTV.imDbRatingCount}<br>
+                <span class="bold-title">rankUpDown:</span>${popularTV.rankUpDown}<br>
+                <span class="bold-title">release-year:</span>${popularTV.year}<br>
+            </p>
+            <button id="Trailer" type="button">  Watch Trailer</button>
+        </div>
+    </div>`;
       });
 
       popularTVsDiv.innerHTML += content;
@@ -110,4 +106,19 @@ const searchMovie = () => {
      </div>`;
 
     });
+}
+
+function Trailer(x) {
+  // let x = wait
+  // fetch(`https://imdb-api.com/API/YouTubeTrailer/k_6f75ijyi/${x}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //         const contentsDiv = document.getElementById("contents");
+
+  //         contentsDiv.innerHTML = "";
+  //         const searchResults = data;
+
+  //         var content = "";
+  //     });
+  console.log("Thiis is my id " + x)
 }
